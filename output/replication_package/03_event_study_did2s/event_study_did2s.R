@@ -193,7 +193,7 @@ run_did2s_model <- function(idx, params, base_data) {
 # ----------------------------------------------------------------------------
 
 # Define model indices to run (0-based indices from the Excel `idx` column)
-MODEL_INDICES <- c(0:7, 10:19) # Skipping 8:9, dependent var in synth data constant
+MODEL_INDICES <- c(0:6, 8, 10:19) # Skipping 7, 9: dependent var (prepaid) is constant in synth data for these subgroups
 MODEL_INDICES <- MODEL_INDICES + 1 # convert to 1-based row indexing
 
 walk(MODEL_INDICES, ~run_did2s_model(.x, parameters, y14m_fsf))

@@ -59,4 +59,7 @@ source("output/replication_package/06_gardner_vs_callaway/callaway_es.R")
 message("== 07: Share of securitized loans (Table 1) ==")
 source("output/replication_package/07_share_of_securitized_loans/share_of_securitized_loans.R")
 
+message("== 08: Boxplot comparison (Fig S1) ==")
+source("output/replication_package/08_comparison/dti_fico_ltv_compare.R")
+
 message("== Done. ==")

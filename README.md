@@ -35,6 +35,10 @@ Place these files under the project root before running any script:
   attributes (investor type, etc.)
 - `synthetic-data/tx_harvey_obs.csv` — observed (FEMA high-water-mark) Harvey
   inundation depths, used for the Figure S2 robustness check
+- `synthetic-data/y14m_comp.rds` — loan-level sample for DTI, FICO, and LTV from
+  Y-14M mortgage data
+- `synthetic-data/mcdash_comp.rds` — loan-level sample for DTI, FICO, and LTV
+  from McDash as a benchmark comparison against the Y-14M
 
 ## How to run
 
@@ -71,6 +75,7 @@ subfolder under `output/replication_package/`.
 | `05_static_did2s/` | `static_did2s/did2s_static_runs.R`, `did2s_static_harvey-inun.R`, `did2s_static_hurricanes.R`, `for_disclosure_inun-x-fico.R` | Figs 2B-G, 3B-G, S4B-G, S6, S7, S8; Fig S2 |
 | `06_gardner_vs_callaway/` | `gardner_vs_callaway/callaway.R` | Fig S3 (Callaway & Sant'Anna robustness check) |
 | `07_share_of_securitized_loans/` | `share_of_securitized_loans/share_of_securitized_loans.R` | Table 1 (investor-type breakdown) |
+| `08_comparison/` | `raw_mcdash_comparison/dti_fico_ltv_compare.R` | Figs S1 |
 
 ## Notes on computational cost
 

@@ -7,6 +7,8 @@ inputs required by `output/replication_package`:
 - `analyze1.rds`
 - `y14m_check_forbearance.csv.gz`
 - `tx_harvey_obs.csv`
+- `y14m_comp.rds`
+- `mcdash_comp.rds`
 
 No row from the real data files is copied, transformed, or otherwise present
 here. Every value is drawn from probability distributions calibrated to

@@ -62,4 +62,7 @@ source("output/replication_package/07_share_of_securitized_loans/share_of_securi
 message("== 08: Boxplot comparison (Fig S1) ==")
 source("output/replication_package/08_comparison/dti_fico_ltv_compare.R")
 
+message("== 09: Maps (Figs 1, 4) ==")
+message("NOTICE: Run Figure_1/figure_1.py and Figure_4/figure_4.py in Python")
+
 message("== Done. ==")

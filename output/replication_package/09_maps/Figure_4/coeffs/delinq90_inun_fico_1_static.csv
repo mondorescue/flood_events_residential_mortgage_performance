@@ -1,0 +1,6 @@
+coef_names,coef,se,obs,obs_ctrl,obs_trmt,sub_obs,sub_obs_ctrl,sub_obs_trmt,outcome,Rel_month,Interacted_rel,notes
+post::1:inun_group::FFE flooded 1Q,0.044524165,0.006521138,357401,212680,144721,48753,28259,20494,dlq90,1,FFE flooded 1Q,
+post::1:inun_group::FFE flooded 2Q,0.05316621,0.007605762,357401,212680,144721,48753,28259,20494,dlq90,1,FFE flooded 2Q,
+post::1:inun_group::FFE flooded 3Q,0.043547879,0.008274199,357401,212680,144721,48753,28259,20494,dlq90,1,FFE flooded 3Q,
+post::1:inun_group::FFE flooded 4Q,0.072708443,0.008547235,357401,212680,144721,48753,28259,20494,dlq90,1,FFE flooded 4Q,
+post::1:inun_group::FFE not flooded,0.038713211,0.003584985,357401,212680,144721,48753,28259,20494,dlq90,1,FFE not flooded,

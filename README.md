@@ -13,6 +13,11 @@ It is organized into one folder per analysis component.
 - Packages: `tidyverse`, `did2s`, `did` (v2.1.1 tested), `readxl`,
   `slider`, `gt`
 
+##### For `09_maps`
+
+- Python (>= 3.11 recommended)
+- Packages: `matplotlib`, `numpy`, `pandas`, `seaborn`, `geopandas`
+
 Install with:
 
 ```r
@@ -75,7 +80,15 @@ subfolder under `output/replication_package/`.
 | `05_static_did2s/` | `static_did2s/did2s_static_runs.R`, `did2s_static_harvey-inun.R`, `did2s_static_hurricanes.R`, `for_disclosure_inun-x-fico.R` | Figs 2B-G, 3B-G, S4B-G, S6, S7, S8; Fig S2 |
 | `06_gardner_vs_callaway/` | `gardner_vs_callaway/callaway.R` | Fig S3 (Callaway & Sant'Anna robustness check) |
 | `07_share_of_securitized_loans/` | `share_of_securitized_loans/share_of_securitized_loans.R` | Table 1 (investor-type breakdown) |
-| `08_comparison/` | `raw_mcdash_comparison/dti_fico_ltv_compare.R` | Figs S1 |
+| `08_comparison/` | `raw_mcdash_comparison/dti_fico_ltv_compare.R` | Fig S1 |
+| `09_maps/Figure_1` | `python_maps/figure_1.py` | Fig 1 |
+| `09_maps/Figure_4` | `python_maps/figure_4.py` | Fig 4 |
+
+## Note on `09_maps`
+
+Figures 1 and 4 were produced in Python 3.11. The `run_all.R` script will output a message informing user to run the files in `09_maps` in Python to produce Figs 1 and 4.
+
+Unlike the R scripts, run the Python scripts inside their respective folder. For instance, to generate Figure 1, go into `09_maps/Figure_1` and run the `figure1.py` script in Python.
 
 ## Notes on computational cost
 

@@ -29,7 +29,7 @@ stopifnot(
     dir.exists("synthetic-data")
 )
 
-message("== 01: Summary statistics (Table 1 / Table S2) ==")
+message("== 01: Summary statistics (Table 1) ==")
 source("output/replication_package/01_summary_stats/summary_stats.R")
 
 message("== 02: Control group baseline rates (Table S3) ==")

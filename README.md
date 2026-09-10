@@ -64,7 +64,7 @@ subfolder under `output/replication_package/`.
 | Folder | Original source(s) | Manuscript output(s) |
 |---|---|---|
 | `00_common/` | `*/helper_functions.R` (deduplicated) | — (shared coefficient-cleaning / plotting helpers) |
-| `01_summary_stats/` | `estimation_summary_stats/summary.R`, `summary_rate.R` | Table 1, Table S2 |
+| `01_summary_stats/` | `estimation_summary_stats/summary.R`, `summary_rate.R` | Table 1 |
 | `02_baseline_stats/` | `control_group_baseline_stats/baseline.R`, `baseline_rate.R` | Table S3 |
 | `03_event_study_did2s/` | `event_study_did2s/did2s_es_runs.R` | Figs 2A, 3A, S4A, S5 (primary spec, SE clustered by loan) |
 | `04_event_study_did2s_other_SE/` | `event_study_did2s_other_SE/did2s_es_runs.R` | Robustness check (SE clustered by event, 5 events excluded) |

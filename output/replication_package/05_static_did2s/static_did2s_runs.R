@@ -43,7 +43,7 @@ y14m_fsf <- read_rds(file.path(PATH_DERIVED, "analyze.rds")) %>%
   filter(between(relative_month, -24, 24)) %>%
   mutate(
     date = ymd(as_of_mon_id * 100 + 1),
-    post = if_else(relative_month >= 0, 1L, 0L)
+    post = if_else(relative_month > 0, 1L, 0L)
   )
 
 # Create outcome variables ----------------------------------------------------

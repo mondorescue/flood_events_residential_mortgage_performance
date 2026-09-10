@@ -48,12 +48,11 @@ y14m_fsf <- read_rds(file.path(PATH_DERIVED, "analyze.rds")) %>%
 
 # Create outcome variables ----------------------------------------------------
 y14m_fsf <- y14m_fsf %>%
-  arrange(ID, relative_month) %>%
-  group_by(ID) %>%
+  group_by(ID, post) %>%
   mutate(
-    dlq90 = as.integer(slider::slide_int(ddlq90, sum, .before = 24, .complete = FALSE) > 0),
-    dlq120 = as.integer(slider::slide_int(ddlq120, sum, .before = 24, .complete = FALSE) > 0),
-    fc = as.integer(slider::slide_int(dfc, sum, .before = 24, .complete = FALSE) > 0),
+    dlq90 = as.integer(max(ddlq90, na.rm = TRUE) > 0),
+    dlq120 = as.integer(max(ddlq120, na.rm = TRUE) > 0),
+    fc = as.integer(max(dfc, na.rm = TRUE) > 0),
     pp = prepaid
   ) %>%
   ungroup()

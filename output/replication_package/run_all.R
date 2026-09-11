@@ -14,9 +14,22 @@
 #   - synthetic-data/analyze1.rds
 #   - synthetic-data/y14m_check_forbearance.csv.gz
 #   - synthetic-data/tx_harvey_obs.csv
+#   - synthetic-data/y14m_comp.rds
+#   - synthetic-data/mcdash_comp.rds
+#   - synthetic-data/y14m_counts.rds
+#   - synthetic-data/fsf_floods.rds
 #
 # Required R packages:
-#   tidyverse, did2s, did, readxl, slider, gt, lubridate
+#   tidyverse, did2s, did, readxl, slider, gt
+#
+# Required Python (section 10, maps) -- Python >= 3.11:
+#   matplotlib, numpy, pandas, seaborn, geopandas, openpyxl
+#
+#   Section 10 shells out to Python via system2(). A python3 (or python)
+#   interpreter must be discoverable on PATH, with the packages above
+#   installed in that interpreter. The Python scripts resolve their own
+#   input/output paths relative to their script location, so they run
+#   correctly when launched from the project root by this script.
 #
 # NOTE: The event-study models (03, 04) and the full static battery (05)
 # are computationally intensive (up to several days and ~300GB RAM for the
@@ -62,7 +75,28 @@ source("output/replication_package/07_share_of_securitized_loans/share_of_securi
 message("== 08: Boxplot comparison (Fig S1) ==")
 source("output/replication_package/08_comparison/dti_fico_ltv_compare.R")
 
-message("== 09: Maps (Figs 1, 4) ==")
-message("NOTICE: Run Figure_1/figure_1.py and Figure_4/figure_4.py in Python")
+message("== 09: Historical flood events (Table S1) ==")
+source("output/replication_package/09_historical_flood_events/historical_flood_events.R")
+
+message("== 10: Maps (Figs 1, 4) ==")
+
+# Run Python map scripts as external processes.
+# system2 returns the exit status; stop if nonzero.
+
+py <- Sys.which("python3")
+if (py == "") py <- Sys.which("python")
+stopifnot("No python interpreter found on PATH" = py != "")
+
+fig1_status <- system2(
+  py,
+  args = shQuote("output/replication_package/10_maps/Figure_1/figure_1.py")
+)
+if (fig1_status != 0) warning("figure_1.py exited with a nonzero status (", fig1_status, ")")
+
+fig4_status <- system2(
+  py,
+  args = shQuote("output/replication_package/10_maps/Figure_4/figure_4.py")
+)
+if (fig4_status != 0) warning("figure_4.py exited with a nonzero status (", fig4_status, ")")
 
 message("== Done. ==")

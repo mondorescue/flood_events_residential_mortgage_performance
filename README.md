@@ -18,11 +18,43 @@ It is organized into one folder per analysis component.
 - Python (>= 3.11 recommended)
 - Packages: `matplotlib`, `numpy`, `pandas`, `seaborn`, `geopandas`
 
-Install with:
+Install R packages with:
 
 ```r
 install.packages(c("tidyverse", "did2s", "did", "readxl", "slider", "gt"))
 ```
+
+Install Python packages with:
+
+```python
+pip install matplotlib numpy pandas seaborn geopandas
+```
+
+## Python environment setup for `run_all.R`
+
+`run_all.R` invokes the Python map scripts (`09_maps`) as external processes via
+R's `system2()`. For this to work:
+
+1. A Python interpreter must be discoverable on the system `PATH` under the name
+   `python3` or `python`. `run_all.R` resolves the interpreter with 
+   `Sys.which("python3")`, then falls back to `Sys.which("python")`. If neither
+   if found, the script stops with an error.
+2. The required Python packages (`matplotlib`, `numpy`, `pandas`, `seaborn`,
+   `geopandas`) must be installed in the interpreter that `Sys.which` locates.
+   Verify with:
+   ```bash
+   python3 -c "import matplotlib, numpy, pandas, seaborn, geopandas"
+   ```
+   A nonzero exit or import error means the packages are not installed in that
+   interpreter.
+3. If the scripts require a specific virtual environment or conda environment,
+   activate it in the same shell session before launching R, so the intended
+   interpreter appears first on `PATH`. Alternatively, edit the `py` assignment
+   in the section 09 block of `run_all.R` to point at the absolute path of the
+   desired interpreter.
+   
+Each Python script is run in its own process, isolated from the R session. A
+nonzero exit status from either script halts `run_all.R`.
 
 ## Required input data (synthetic data)
 
@@ -44,6 +76,8 @@ Place these files under the project root before running any script:
   Y-14M mortgage data
 - `synthetic-data/mcdash_comp.rds` — loan-level sample for DTI, FICO, and LTV
   from McDash as a benchmark comparison against the Y-14M
+- `synthetic-data/y14m_counts.rds` — loan-level Y-14M linked to events
+- `synthetic-data/fsf_floods.rds` — First Street properties linked to events
 
 ## How to run
 
@@ -54,14 +88,14 @@ this `replication_package/` folder.
 To run everything in sequence:
 
 ```r
-setwd("/path/to/floods-and-mortgages")   # project root
+setwd("/path/to/flood_events_residential_mortgage_performance")   # project root
 source("output/replication_package/run_all.R")
 ```
 
 Or run any individual component directly, e.g.:
 
 ```bash
-cd /path/to/floods-and-mortgages
+cd /path/to/flood_events_residential_mortgage_performance
 Rscript output/replication_package/03_event_study_did2s/event_study_did2s.R
 ```
 
@@ -81,14 +115,25 @@ subfolder under `output/replication_package/`.
 | `06_gardner_vs_callaway/` | `gardner_vs_callaway/callaway.R` | Fig S3 (Callaway & Sant'Anna robustness check) |
 | `07_share_of_securitized_loans/` | `share_of_securitized_loans/share_of_securitized_loans.R` | Table 1 (investor-type breakdown) |
 | `08_comparison/` | `raw_mcdash_comparison/dti_fico_ltv_compare.R` | Fig S1 |
-| `09_maps/Figure_1` | `python_maps/figure_1.py` | Fig 1 |
-| `09_maps/Figure_4` | `python_maps/figure_4.py` | Fig 4 |
+| `09_historical_flood_events/` | `event_counts/counts.R` | Table S1 |
+| `10_maps/Figure_1` | `python_maps/figure_1.py` | Fig 1 |
+| `10_maps/Figure_4` | `python_maps/figure_4.py` | Fig 4 |
 
-## Note on `09_maps`
+## Note on `10_maps`
 
-Figures 1 and 4 were produced in Python 3.11. The `run_all.R` script will output a message informing user to run the files in `09_maps` in Python to produce Figs 1 and 4.
+Figures 1 and 4 were produced in Python 3.11. `run_all.R` now runs the `10_maps`
+Python scripts automatically as external processes; no manual Python step is
+required when using `run_all.R`, provided the Python environment is configured
+as described above.
 
-Unlike the R scripts, run the Python scripts inside their respective folder. For instance, to generate Figure 1, go into `09_maps/Figure_1` and run the `figure1.py` script in Python.
+To run the Python scripts manually instead, execute them directly with your
+Python interpreter, e.g.:
+
+```bash
+cd /path/to/flood_events_residential_mortgage_performance
+python3 output/replication_package/09_maps/Figure_1/figure_1.py
+python3 output/replication_package/09_maps/Figure_4/figure_4.py
+```
 
 ## Notes on computational cost
 

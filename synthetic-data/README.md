@@ -9,6 +9,8 @@ inputs required by `output/replication_package`:
 - `tx_harvey_obs.csv`
 - `y14m_comp.rds`
 - `mcdash_comp.rds`
+- `y14m_counts.rds`
+- `fsf_floods.rds`
 
 No row from the real data files is copied, transformed, or otherwise present
 here. Every value is drawn from probability distributions calibrated to

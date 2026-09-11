@@ -13,7 +13,7 @@ It is organized into one folder per analysis component.
 - Packages: `tidyverse`, `did2s`, `did` (v2.1.1 tested), `readxl`,
   `slider`, `gt`
 
-##### For `09_maps`
+##### For `10_maps`
 
 - Python (>= 3.11 recommended)
 - Packages: `matplotlib`, `numpy`, `pandas`, `seaborn`, `geopandas`
@@ -32,7 +32,7 @@ pip install matplotlib numpy pandas seaborn geopandas
 
 ## Python environment setup for `run_all.R`
 
-`run_all.R` invokes the Python map scripts (`09_maps`) as external processes via
+`run_all.R` invokes the Python map scripts (`10_maps`) as external processes via
 R's `system2()`. For this to work:
 
 1. A Python interpreter must be discoverable on the system `PATH` under the name
@@ -131,8 +131,8 @@ Python interpreter, e.g.:
 
 ```bash
 cd /path/to/flood_events_residential_mortgage_performance
-python3 output/replication_package/09_maps/Figure_1/figure_1.py
-python3 output/replication_package/09_maps/Figure_4/figure_4.py
+python3 output/replication_package/10_maps/Figure_1/figure_1.py
+python3 output/replication_package/10_maps/Figure_4/figure_4.py
 ```
 
 ## Notes on computational cost

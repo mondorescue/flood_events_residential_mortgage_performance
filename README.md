@@ -50,7 +50,7 @@ R's `system2()`. For this to work:
 3. If the scripts require a specific virtual environment or conda environment,
    activate it in the same shell session before launching R, so the intended
    interpreter appears first on `PATH`. Alternatively, edit the `py` assignment
-   in the section 09 block of `run_all.R` to point at the absolute path of the
+   in the section 10 block of `run_all.R` to point at the absolute path of the
    desired interpreter.
    
 Each Python script is run in its own process, isolated from the R session. A
